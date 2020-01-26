@@ -1,49 +1,5 @@
-// class All{
-//     constructor(){
-//         this.x = x;
-//         this.y = y;
-//         this.multiply = 0;
-//         this.directions = [
-//             [this.x - 1, this.y - 1],
-//             [this.x, this.y - 1],
-//             [this.x + 1, this.y - 1],
-//             [this.x - 1, this.y],
-//             [this.x + 1, this.y],
-//             [this.x - 1, this.y + 1],
-//             [this.x, this.y + 1],
-//             [this.x + 1, this.y + 1]
-//         ];
-//     }
-// }
-
-// class Extend{
-//     constructor(x, y) {
-//         this.x = x;
-//         this.y = y;
-//         this.multiply = 0;
-//         this.energy = 10;
-//         this.directions = [];
-//     }
-
-//     //թարմացնել շրջապատի կոորդինատները
-//     updateCoordinates() {
-//         this.directions = [
-//             [this.x - 1, this.y - 1],
-//             [this.x, this.y - 1],
-//             [this.x + 1, this.y - 1],
-//             [this.x - 1, this.y],
-//             [this.x + 1, this.y],
-//             [this.x - 1, this.y + 1],
-//             [this.x, this.y + 1],
-//             [this.x + 1, this.y + 1]
-//         ];
-//     }
-
-// }
-
-
-class Grass {
-    constructor(x, y) {
+class All {
+    constructor(x, y, multiply, directions) {
         this.x = x;
         this.y = y;
         this.multiply = 0;
@@ -57,6 +13,39 @@ class Grass {
             [this.x, this.y + 1],
             [this.x + 1, this.y + 1]
         ];
+    }
+}
+
+class Extend {
+    constructor(x, y, multiply, energy, directions) {
+        this.x = x;
+        this.y = y;
+        this.multiply = 0;
+        this.energy = 10;
+        this.directions = [];
+    }
+
+    //թարմացնել շրջապատի կոորդինատները
+    updateCoordinates() {
+        this.directions = [
+            [this.x - 1, this.y - 1],
+            [this.x, this.y - 1],
+            [this.x + 1, this.y - 1],
+            [this.x - 1, this.y],
+            [this.x + 1, this.y],
+            [this.x - 1, this.y + 1],
+            [this.x, this.y + 1],
+            [this.x + 1, this.y + 1]
+        ];
+    }
+
+}
+
+
+class Grass extends All {
+    constructor(x, y, multiply, directions) {
+
+        super(x, y, multiply, directions)
 
     }
     // super(x,y);
@@ -99,28 +88,24 @@ class Grass {
     }
 }
 //խոտակերի կլասը
-class GrassEater {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.multiply = 0;
-        this.energy = 10;
-        this.directions = [];
+class GrassEater extends Extend {
+    constructor(x, y, multiply, energy, directions) {
+        super(x, y, multiply, energy, directions);
     }
 
     //թարմացնել շրջապատի կոորդինատները
-    updateCoordinates() {
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-    }
+    // updateCoordinates() {
+    //     this.directions = [
+    //         [this.x - 1, this.y - 1],
+    //         [this.x, this.y - 1],
+    //         [this.x + 1, this.y - 1],
+    //         [this.x - 1, this.y],
+    //         [this.x + 1, this.y],
+    //         [this.x - 1, this.y + 1],
+    //         [this.x, this.y + 1],
+    //         [this.x + 1, this.y + 1]
+    //     ];
+    // }
 
     // super(x,y)
 
@@ -251,28 +236,25 @@ class GrassEater {
 }
 
 
-class Gishatich {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.multiply = 0;
-        this.energy = 14;
-        this.directions = [];
+class Gishatich extends Extend {
+    constructor(x, y, multiply, energy, directions) {
+        super(x, y, multiply, energy, directions);
+        Extend.energy = 14;
     }
 
     //թարմացնել շրջապատի կոորդինատները
-    updateCoordinates() {
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-    }
+    // updateCoordinates() {
+    //     this.directions = [
+    //         [this.x - 1, this.y - 1],
+    //         [this.x, this.y - 1],
+    //         [this.x + 1, this.y - 1],
+    //         [this.x - 1, this.y],
+    //         [this.x + 1, this.y],
+    //         [this.x - 1, this.y + 1],
+    //         [this.x, this.y + 1],
+    //         [this.x + 1, this.y + 1]
+    //     ];
+    // }
 
     //հետազոտում է շրջապատը, որոնում է հետաքրքրող կերպարներին
     //կերպարը որոշվում է character արգումենտով
@@ -401,22 +383,10 @@ class Gishatich {
 
 
 
-class Hox {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.multiply = 0;
+class Hox extends All {
+    constructor(x, y, multiply, directions) {
+        super(x, y, multiply, directions);
         this.energy = 1;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
 
     }
     //հետազոտում է շրջապատը, որոնում է հետաքրքրող կերպարներին
@@ -477,23 +447,10 @@ class Hox {
 
 
 
-class Bomb {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.multiply = 0;
+class Bomb extends All {
+    constructor(x, y, multiply, directions) {
+        super(x, y, multiply, directions);
         this.energy = 15;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-
     }
     //հետազոտում է շրջապատը, որոնում է հետաքրքրող կերպարներին
     //կերպարը որոշվում է character արգումենտով

@@ -1,4 +1,4 @@
-moduls.All = class All {
+class All {
     
     constructor(x, y, multiply, directions) {
         this.x = x;
